@@ -1,0 +1,18 @@
+{
+  "id" : "abcdefgh",
+  "description" : {
+    "string" : "Sample"
+  },
+  "empty" : null,
+  "direction" : {
+    "dev.psmolinski.avro.Direction" : "N"
+  },
+  "suit" : "SPADES",
+  "age" : 28,
+  "balance" : 14563.27,
+  "code" : "\u0000\u0005Eó",
+  "digest" : "\u001F°ã1ÀZRÕë}oÀ\u00182\r",
+  "test" : {
+    "int" : 2
+  }
+}

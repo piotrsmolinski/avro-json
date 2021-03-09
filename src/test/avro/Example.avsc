@@ -1,0 +1,73 @@
+{
+  "type": "record",
+  "name": "Example",
+  "namespace": "dev.psmolinski.avro",
+  "fields": [
+    {
+      "name": "id",
+      "type": {
+        "type":"string",
+        "avro.java.string":"String"
+      }
+    },
+    {
+      "name": "description",
+      "type": ["null","string"]
+    },
+    {
+      "name": "empty",
+      "type": ["null","string"]
+    },
+    {
+      "name": "direction",
+      "type":  ["null", {
+          "type": "enum",
+          "name": "Direction",
+          "symbols": ["N", "S", "E", "W"]
+        }
+      ]
+    },
+    {
+      "name": "suit",
+      "type": {
+        "type": "enum",
+        "name": "Suit",
+        "symbols": ["SPADES", "HEARTS", "DIAMONDS", "CLUBS"]
+      }
+    },
+    {
+      "name": "age",
+      "type": "int"
+    },
+    {
+      "name": "balance",
+      "type": "double"
+    },
+    {
+      "name": "code",
+      "type": "bytes"
+    },
+    {
+      "name": "digest",
+      "type": {
+        "type": "fixed",
+        "size": 16,
+        "name": "MD5"
+      }
+    },
+    {
+      "name": "test",
+      "type": [
+        "null",
+        "string",
+        "int",
+        {
+          "type": "enum",
+          "name": "SuitShort",
+          "symbols": ["S", "H", "D", "C"]
+        }
+      ]
+    }
+
+  ]
+}
