@@ -67,6 +67,32 @@
           "symbols": ["S", "H", "D", "C"]
         }
       ]
+    },
+    {
+      "name": "taxRate",
+      "type": "float"
+    },
+    {
+      "name": "active",
+      "type": "boolean"
+    },
+    {
+      "name": "timestamp",
+      "type": "long"
+    },
+    {
+      "name": "date",
+      "type": {
+        "type": "array",
+        "items": "int"
+      }
+    },
+    {
+      "name": "tokens",
+      "type": {
+        "type": "map",
+        "values": "string"
+      }
     }
 
   ]

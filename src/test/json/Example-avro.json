@@ -14,5 +14,12 @@
   "digest" : "\u001F°ã1ÀZRÕë}oÀ\u00182\r",
   "test" : {
     "int" : 2
+  },
+  "taxRate" : 10.2,
+  "active" : true,
+  "timestamp" : 1597792595230,
+  "date" : [2021, 1, 31],
+  "tokens" : {
+    "username1" : "password1"
   }
 }
