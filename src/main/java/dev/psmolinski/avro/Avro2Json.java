@@ -9,7 +9,10 @@ import org.apache.avro.generic.GenericRecord;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -104,10 +107,10 @@ public class Avro2Json {
         return x instanceof Map;
     }
     private Object convertMap(Object x) {
-        Map<String, Object> map = (Map<String,Object>) x;
+        Map<CharSequence, Object> map = (Map<CharSequence,Object>) x;
         Map<String, Object> result = new HashMap<>();
-        for (Map.Entry<String,Object> e : map.entrySet()) {
-            result.put(e.getKey(), e.getValue());
+        for (Map.Entry<CharSequence,Object> e : map.entrySet()) {
+            result.put(e.getKey().toString(), convert(e.getValue()));
         }
         return result;
     }

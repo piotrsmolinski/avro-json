@@ -1,13 +1,20 @@
 package dev.psmolinski.avro;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import java.util.Arrays;
+import java.util.Collections;
 import org.apache.avro.Schema;
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.generic.GenericData;
 import org.apache.avro.generic.GenericEnumSymbol;
 import org.apache.avro.generic.GenericFixed;
 import org.apache.avro.generic.GenericRecord;
-import org.apache.avro.io.*;
+import org.apache.avro.io.DatumReader;
+import org.apache.avro.io.DatumWriter;
+import org.apache.avro.io.Decoder;
+import org.apache.avro.io.DecoderFactory;
+import org.apache.avro.io.Encoder;
+import org.apache.avro.io.EncoderFactory;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
 import org.assertj.core.api.Assertions;
@@ -17,7 +24,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Map;
 
@@ -64,6 +70,18 @@ public class Json2AvroTest {
                 .isEqualTo(MessageDigest.getInstance("MD5").digest("testtesttest".getBytes()));
         Assertions.assertThat(record.get("test"))
                 .isEqualTo(2);
+        Assertions.assertThat(record.get("taxRate"))
+                .isEqualTo(10.2f);
+        Assertions.assertThat(record.get("active"))
+                .isEqualTo(true);
+        Assertions.assertThat(record.get("timestamp"))
+                .isEqualTo(1597792595230L);
+        Assertions.assertThat(record.get("date"))
+                .isInstanceOf(GenericArray.class);
+        Assertions.assertThat((GenericArray)record.get("date"))
+                .isEqualTo(Arrays.asList(2021, 1, 31));
+        Assertions.assertThat(record.get("tokens"))
+                .isEqualTo(Collections.singletonMap(new Utf8("username1"), new Utf8("password1")));
 
     }
 
@@ -95,6 +113,18 @@ public class Json2AvroTest {
                 .isEqualTo(MessageDigest.getInstance("MD5").digest("testtesttest".getBytes()));
         Assertions.assertThat(record.getTest())
                 .isEqualTo(2);
+        Assertions.assertThat(record.get("taxRate"))
+            .isEqualTo(10.2f);
+        Assertions.assertThat(record.get("active"))
+            .isEqualTo(true);
+        Assertions.assertThat(record.get("timestamp"))
+            .isEqualTo(1597792595230L);
+        Assertions.assertThat(record.get("date"))
+            .isInstanceOf(GenericArray.class);
+        Assertions.assertThat((GenericArray)record.get("date"))
+            .isEqualTo(Arrays.asList(2021, 1, 31));
+        Assertions.assertThat(record.get("tokens"))
+            .isEqualTo(Collections.singletonMap(new Utf8("username1"), new Utf8("password1")));
 
     }
 
@@ -134,6 +164,18 @@ public class Json2AvroTest {
                 .isEqualTo(MessageDigest.getInstance("MD5").digest("testtesttest".getBytes()));
         Assertions.assertThat(record.get("test"))
                 .isEqualTo(2);
+        Assertions.assertThat(record.get("taxRate"))
+            .isEqualTo(10.2f);
+        Assertions.assertThat(record.get("active"))
+            .isEqualTo(true);
+        Assertions.assertThat(record.get("timestamp"))
+            .isEqualTo(1597792595230L);
+        Assertions.assertThat(record.get("date"))
+            .isInstanceOf(GenericArray.class);
+        Assertions.assertThat((GenericArray)record.get("date"))
+            .isEqualTo(Arrays.asList(2021, 1, 31));
+        Assertions.assertThat(record.get("tokens"))
+            .isEqualTo(Collections.singletonMap(new Utf8("username1"), new Utf8("password1")));
 
     }
 
