@@ -66,7 +66,6 @@ public class Avro2JsonTest {
 
         ObjectMapper om = new ObjectMapper();
         om.enable(SerializationFeature.INDENT_OUTPUT);
-        System.out.println(om.writeValueAsString(json));
 
         Map<String, Object> map = (Map<String,Object>)om.readValue(om.writeValueAsString(json), Object.class);
 
@@ -202,8 +201,6 @@ public class Avro2JsonTest {
         encoder.flush();
 
         String json = new String(baos.toByteArray(), StandardCharsets.UTF_8);
-
-        System.out.println(json);
 
         ObjectMapper om = new ObjectMapper();
         om.enable(SerializationFeature.INDENT_OUTPUT);
